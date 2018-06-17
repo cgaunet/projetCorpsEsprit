@@ -14,12 +14,16 @@ RUN apt-get --yes --force-yes install python3.6
 RUN apt-get update
 RUN apt-get --yes --force-yes install python3-pip
 RUN pip3 install -U Flask
+RUN pip3 install -U flask-cors
+RUN pip3 install SQLAlchemy
+RUN pip3 install Flask-SQLAlchemy
 # Install for node.js
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 RUN apt-get install -y nodejs
-RUN sudo npm install npm --global
+RUN npm install npm --global
 # Install for Vue.js
 RUN npm install -g vue-cli
+RUN npm install --save axios
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
